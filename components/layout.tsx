@@ -7,9 +7,9 @@ export function Callout({children, type, title}: {
     title: string;
 }) {
     return (
-        <div className={"col-span-3 grid grid-cols-3 gap-4 h-0"}>
+        <div className={"col-span-3 phone:col-span-1 grid grid-cols-3 phone:grid-cols-1 gap-4 h-0 phone:h-auto phone:mb-4"}>
             <div
-                className={"w-full col-start-3 rounded-lg bg-ctp-mantle border-ctp-surface0 border-[1px] flex flex-col -translate-y-1/2"}>
+                className={"w-full col-start-3 phone:col-start-1 rounded-lg bg-ctp-mantle border-ctp-surface0 border-[1px] flex flex-col -translate-y-1/2 phone:translate-y-0"}>
                 <div
                     className={`h-12 border-ctp-surface0 border-b-[1px] text-lg px-4 flex flex-row items-center font-bold gap-3 bg-ctp-surface0 rounded-t-lg`}>
                     <div className={`${calloutStyles[type]["color"]}`}>
@@ -29,7 +29,7 @@ export function Body({children}: {
     children: ReactNode
 }) {
     return (
-        <div className={"col-span-2 flex flex-col gap-4 px-4 pb-4 last:pb-12"}>
+        <div className={"col-span-2 phone:col-span-1 flex flex-col gap-4 pb-4 last:pb-12"}>
             {children}
         </div>
     );
@@ -41,9 +41,9 @@ export function BlogContainer({children}: {
     return (
         <main
             className={`h-[100dvh] w-[100dvw] max-w-[100dvw] flex flex-row justify-center bg-ctp-crust overflow-x-scroll text-ctp-text`}>
-            <div className={"w-auto max-w-[1280px] px-6 grid grid-cols-5 gap-4"}>
-                <div id={"nav-menu"} className={"fixed flex flex-col gap-1 pt-24 w-56 text-wrap col-span-1"}/>
-                <div className={"w-full grid grid-cols-3 gap-x-12 col-start-2 col-span-4 mb-12"}>
+            <div className={"w-auto max-w-[1280px] px-6 grid grid-cols-5 gap-4 mobile:grid-cols-4 mobile:max-w-[1024px]"}>
+                <div id={"nav-menu"} className={"fixed flex flex-col gap-1 pt-24 w-56 text-wrap col-span-1 mobile:hidden"}/>
+                <div className={"w-full grid grid-cols-3 phone:grid-cols-1 gap-x-12 col-start-2 mobile:col-start-1 col-span-4 mb-12"}>
                     {children}
                 </div>
             </div>

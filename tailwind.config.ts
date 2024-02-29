@@ -15,6 +15,11 @@ const config: Config = {
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             },
         },
+        screens: {
+            'phone': {'min': '0px', 'max': '639px'},
+            'tablet': {'min': '640px', 'max': '1279px'},
+            'mobile': {'min': '0px', 'max': '1279px'},
+        },
     },
     plugins: [
         require("@catppuccin/tailwindcss")({

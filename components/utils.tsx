@@ -5,6 +5,7 @@ import {FaCaretDown, FaCopy} from "react-icons/fa6";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import {createPortal} from "react-dom";
+import {useOnScreen} from "@/lib/hooks";
 
 export function Title({children}: {
     children?: ReactNode
@@ -51,13 +52,13 @@ export function Header({children}: {
         <>
             {navMenu && createPortal(
                 <p
-                    className={"text-sm text-ctp-subtext1 indent-4 hover:text-ctp-text transition-colors duration-100 cursor-pointer"}
+                    className={"text-sm text-ctp-subtext1 indent-4 hover:text-ctp-green transition-colors duration-100 cursor-pointer"}
                     onClick={() => {
                         if (!selfRef.current) return;
                         selfRef.current.scrollIntoView({behavior: "smooth"});
                     }}
                 >
-                    • {children}
+                    {children}
                 </p>,
                 navMenu
             )}
@@ -82,13 +83,13 @@ export function SubHeader({children}: {
         <>
             {navMenu && createPortal(
                 <p
-                    className={"text-xs text-ctp-subtext0 indent-8 hover:text-ctp-text transition-colors duration-100 cursor-pointer"}
+                    className={`text-xs text-ctp-subtext0 hover:text-ctp-green indent-8 transition-colors duration-100 cursor-pointer`}
                     onClick={() => {
                         if (!selfRef.current) return;
                         selfRef.current.scrollIntoView({behavior: "smooth"});
                     }}
                 >
-                    • {children}
+                    {children}
                 </p>,
                 navMenu
             )}
