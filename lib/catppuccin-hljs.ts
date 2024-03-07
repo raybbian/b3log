@@ -1,6 +1,8 @@
 "use strict";
 
-export default {
+import {CSSProperties} from "react";
+
+const theme : Record<string, CSSProperties> =  {
     "hljs": {
         "display": "block",
         "overflowX": "auto",
@@ -120,3 +122,5 @@ export default {
         "fontWeight": "bold"
     }
 };
+
+export default theme;
