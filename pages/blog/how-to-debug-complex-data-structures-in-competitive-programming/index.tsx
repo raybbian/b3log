@@ -3,14 +3,23 @@ import {Body, Callout, BlogContainer} from "@/components/layout";
 import {
     basicOverloading,
     basicOverloadingOutput,
-    basicOverloadingShow, compilerFlags, debugHelpers,
-    desiredDebug, dijkstraCode, dijkstraOutput, fullDebug,
+    basicOverloadingShow,
+    compilerFlags,
+    debugHelpers,
+    desiredDebug,
+    dijkstraCode,
+    dijkstraOutput,
+    fullDebug,
     genericOverloading,
-    hashmapDebug, macroDebug, parseDebug,
+    hashmapDebug,
+    macroDebug,
+    parseDebug,
     printableConcept,
     rangesOverloading,
     recursiveDebug,
-    recursiveDebugOutput, testDebug, testDebugOutput,
+    recursiveDebugOutput,
+    testDebug,
+    testDebugOutput,
     variadicArguments,
     variadicArgumentsOutput
 } from "@/pages/blog/how-to-debug-complex-data-structures-in-competitive-programming/constants";
@@ -29,10 +38,12 @@ export default function Page() {
                 <Code code={hashmapDebug} language={"cpp"}/>
             </Body>
             <Callout title={"Note"} type={"note"}>
-                If you don't have access to your debug header file, you can use macros and defines such as
-                using <InlineCode>fi</InlineCode> and <InlineCode>se</InlineCode> instead
-                of <InlineCode>first</InlineCode> and <InlineCode>second</InlineCode>. However, it's still a lot of
-                typing, especially if you have to do it multiple times.
+                <Paragraph>
+                    If you don't have access to your debug header file, you can use macros and defines such as
+                    using <InlineCode>fi</InlineCode> and <InlineCode>se</InlineCode> instead
+                    of <InlineCode>first</InlineCode> and <InlineCode>second</InlineCode>. However, it's still a lot of
+                    typing, especially if you have to do it multiple times.
+                </Paragraph>
             </Callout>
             <Body>
                 <Paragraph>
@@ -43,8 +54,9 @@ export default function Page() {
                     of <InlineCode>std::pair</InlineCode> of integers?
                 </Paragraph>
                 <Paragraph>
-                    If you've ever done competitive programming on a site like <Link
-                    href={"https://usaco.org"}>USACO</Link> or <Link href={"https://codeforces.com"}>Codeforces</Link>,
+                    If you've ever done competitive programming on a site like <Link newTab={true}
+                                                                                     href={"https://usaco.org"}>USACO</Link> or <Link
+                    newTab={true} href={"https://codeforces.com"}>Codeforces</Link>,
                     you've probably related to these struggles in some form or another. Visualizing the information in
                     the data structures you use should be a useful option when trying to debug your code. Let's make it
                     so that is the case.
@@ -97,10 +109,13 @@ export default function Page() {
                 </Paragraph>
             </Body>
             <Callout title={"Note"} type={"note"}>
-                We actually see these types of data structures more often than you think. Consider an adjacency list
-                that represents a graph: that's a 2D data structure. Any problem that involves moving on a grid? Another
-                2D data structure. With more complicated DP problems, you might even see a 3D and even 4D data
-                structures.
+                <Paragraph>
+                    We actually see these types of data structures more often than you think. Consider an adjacency list
+                    that represents a graph: that's a 2D data structure. Any problem that involves moving on a grid?
+                    Another
+                    2D data structure. With more complicated DP problems, you might even see a 3D and even 4D data
+                    structures.
+                </Paragraph>
             </Callout>
             <Body>
                 <SubHeader>
@@ -134,12 +149,17 @@ export default function Page() {
                 </Paragraph>
             </Body>
             <Callout title={"Note"} type={"note"}>
-                Note that for certain collections, such as <InlineCode>std::map</InlineCode>, we must include another
-                function to recursively print out pairs. Furthermore, there exists collections such
-                as <InlineCode>std::stack</InlineCode>, <InlineCode>std::queue</InlineCode>,
-                and <InlineCode>std::priority_queue</InlineCode> that do not support range iterators. In that case, we
-                must either convert them to <InlineCode>std::deque</InlineCode> or <InlineCode>std::vector</InlineCode>,
-                or write a separate function to debug their contents.
+                <Paragraph>
+                    Note that for certain collections, such as <InlineCode>std::map</InlineCode>, we must include
+                    another
+                    function to recursively print out pairs. Furthermore, there exists collections such
+                    as <InlineCode>std::stack</InlineCode>, <InlineCode>std::queue</InlineCode>,
+                    and <InlineCode>std::priority_queue</InlineCode> that do not support range iterators. In that case,
+                    we
+                    must either convert them
+                    to <InlineCode>std::deque</InlineCode> or <InlineCode>std::vector</InlineCode>,
+                    or write a separate function to debug their contents.
+                </Paragraph>
             </Callout>
             <Body>
                 <Code code={recursiveDebug} output={recursiveDebugOutput} language={"cpp"}/>
@@ -154,12 +174,17 @@ export default function Page() {
                 <Code code={fullDebug} language={"cpp"} expand={true}/>
             </Body>
             <Callout type={"note"} title={"Note"}>
-                The colors labeled in capital letters like <InlineCode
-                color={"text-ctp-red"}>RED</InlineCode> and <InlineCode color={"text-ctp-green"}>GREEN</InlineCode> are
-                just more C++ macros that I've defined. They replace to <Link
-                href={"https://en.wikipedia.org/wiki/ANSI_escape_code"}>ANSI escape codes</Link>, which allows me to
-                color the output of my debug function. They are taken from <Link
-                href={"https://stackoverflow.com/questions/9158150/colored-output-in-c"}>this</Link> StackOverflow post.
+                <Paragraph>
+                    The colors labeled in capital letters like <InlineCode
+                    color={"text-ctp-red"}>RED</InlineCode> and <InlineCode
+                    color={"text-ctp-green"}>GREEN</InlineCode> are
+                    just more C++ macros that I've defined. They replace to <Link newTab={true}
+                                                                                  href={"https://en.wikipedia.org/wiki/ANSI_escape_code"}>ANSI
+                    escape codes</Link>, which allows me to
+                    color the output of my debug function. They are taken from <Link newTab={true}
+                                                                                     href={"https://stackoverflow.com/questions/9158150/colored-output-in-c"}>this</Link> StackOverflow
+                    post.
+                </Paragraph>
             </Callout>
             <Body>
                 <Paragraph>
@@ -214,8 +239,10 @@ export default function Page() {
                 <Code code={testDebug} output={testDebugOutput} language={"cpp"}/>
             </Body>
             <Callout type={"note"} title={"Note"}>
-                With the ANSI escape codes, the output looks more like this (I'm not trying to convert all that into
-                HTML!):
+                <Paragraph>
+                    With the ANSI escape codes, the output looks more like this (I'm not trying to convert all that into
+                    HTML!):
+                </Paragraph>
                 <Image
                     src={"/how-to-debug-complex-data-structures-in-competitive-programming/debug.png"}
                     alt={"debug image"}
@@ -251,8 +278,9 @@ export default function Page() {
                     Conclusion
                 </Header>
                 <Paragraph>
-                    You can find the full debug file, all put together <Link
-                    href={"https://github.com/raybbian/comp-programming/blob/master/debug/debug.hpp"}>here</Link>. Otherwise,
+                    You can find the full debug file, all put together <Link newTab={true}
+                                                                             href={"https://github.com/raybbian/comp-programming/blob/master/debug/debug.hpp"}>here</Link>.
+                    Otherwise,
                     I'll leave you with another example on how the debug function could be used for graphs:
                 </Paragraph>
                 <Code code={dijkstraCode} output={dijkstraOutput} language={"cpp"} expand={true}/>

@@ -1,5 +1,6 @@
 import {ReactNode} from "react";
 import {calloutIcons, calloutStyles, CalloutType} from "@/lib/callout-constants";
+import {Link, Image} from "@/components/utils";
 
 export function Callout({children, type, title}: {
     children: ReactNode;
@@ -17,7 +18,7 @@ export function Callout({children, type, title}: {
                     </div>
                     {title}
                 </div>
-                <div className={"px-4 py-2"}>
+                <div className={"px-4 py-2 flex flex-col gap-2"}>
                     {children}
                 </div>
             </div>
@@ -41,12 +42,42 @@ export function BlogContainer({children}: {
     return (
         <main
             className={`h-[100dvh] w-[100dvw] max-w-[100dvw] flex flex-row justify-center bg-ctp-crust overflow-x-scroll text-ctp-text`}>
-            <div className={"w-auto max-w-[1280px] px-6 grid grid-cols-5 gap-4 mobile:grid-cols-4 mobile:max-w-[1024px]"}>
-                <div id={"nav-menu"} className={"fixed flex flex-col gap-1 pt-24 w-56 text-wrap col-span-1 mobile:hidden"}/>
-                <div className={"w-full grid grid-cols-3 phone:grid-cols-1 gap-x-12 col-start-2 mobile:col-start-1 col-span-4 mb-12"}>
+            <div className={"w-auto px-6 pt-6 max-w-[1024px]"}>
+                <Link href={"/"}>Back to home</Link>
+                <div className={"w-full grid grid-cols-3 phone:grid-cols-1 gap-x-12 mb-12"}>
                     {children}
                 </div>
             </div>
         </main>
+    );
+}
+
+export function BlogPreview({title, children, link, image}:{
+    title: string;
+    children: ReactNode;
+    link: string;
+    image: string;
+}) {
+    return (
+        <div
+            className={"rounded-lg bg-ctp-base border-ctp-surface0 border-[1px] flex flex-col h-96"}>
+            <div className={"w-full rounded-t-lg overflow-hidden h-1/4"}>
+                <Image
+                    src={image}
+                    alt={title}
+                    height={200}
+                    width={400}
+                />
+            </div>
+            <div className={"px-4 py-2 h-3/4 flex flex-col gap-2"}>
+                <h2 className={"text-xl font-bold line-clamp-2"}>{title}</h2>
+                <div className={"text-sm flex-grow"}>
+                    {children}
+                </div>
+                <div className={"w-full flex flex-row justify-end"}>
+                    <Link href={link}>Read more</Link>
+                </div>
+            </div>
+        </div>
     );
 }

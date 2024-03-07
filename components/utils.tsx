@@ -5,98 +5,34 @@ import {FaCaretDown, FaCopy} from "react-icons/fa6";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import {createPortal} from "react-dom";
-import {useOnScreen} from "@/lib/hooks";
 
 export function Title({children}: {
     children?: ReactNode
 }) {
-    const [navMenu, setNavMenu] = useState<HTMLElement | null>(null);
-    const selfRef: RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
-
-    useEffect(() => {
-        setNavMenu(document.getElementById("nav-menu"));
-    }, []);
-
     return (
-        <>
-            {navMenu && createPortal(
-                <p
-                    className={"cursor-pointer font-bold"}
-                    onClick={() => {
-                        if (!selfRef.current) return;
-                        selfRef.current.scrollIntoView({behavior: "smooth"});
-                    }}
-                >
-                    {children}
-                </p>,
-                navMenu
-            )}
-            <h1 className={"text-5xl font-bold py-4 leading-tight"} ref={selfRef}>
-                {children}
-            </h1>
-        </>
+        <h1 className={"text-5xl font-bold py-4 leading-tight"}>
+            {children}
+        </h1>
     );
 }
 
 export function Header({children}: {
     children?: ReactNode
 }) {
-    const [navMenu, setNavMenu] = useState<HTMLElement | null>(null);
-    const selfRef: RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
-
-    useEffect(() => {
-        setNavMenu(document.getElementById("nav-menu"));
-    }, []);
-
     return (
-        <>
-            {navMenu && createPortal(
-                <p
-                    className={"text-sm text-ctp-subtext1 indent-4 hover:text-ctp-green transition-colors duration-100 cursor-pointer"}
-                    onClick={() => {
-                        if (!selfRef.current) return;
-                        selfRef.current.scrollIntoView({behavior: "smooth"});
-                    }}
-                >
-                    {children}
-                </p>,
-                navMenu
-            )}
-            <h2 className={"text-4xl font-bold leading-tight pt-4"} ref={selfRef}>
-                {children}
-            </h2>
-        </>
+        <h2 className={"text-4xl font-bold leading-tight pt-2"}>
+            {children}
+        </h2>
     );
 }
 
 export function SubHeader({children}: {
     children?: ReactNode
 }) {
-    const [navMenu, setNavMenu] = useState<HTMLElement | null>(null);
-    const selfRef: RefObject<HTMLHeadingElement> = useRef<HTMLHeadingElement>(null);
-
-    useEffect(() => {
-        setNavMenu(document.getElementById("nav-menu"));
-    }, []);
-
     return (
-        <>
-            {navMenu && createPortal(
-                <p
-                    className={`text-xs text-ctp-subtext0 hover:text-ctp-green indent-8 transition-colors duration-100 cursor-pointer`}
-                    onClick={() => {
-                        if (!selfRef.current) return;
-                        selfRef.current.scrollIntoView({behavior: "smooth"});
-                    }}
-                >
-                    {children}
-                </p>,
-                navMenu
-            )}
-            <h3 className={"text-3xl font-bold leading-tight pt-3"} ref={selfRef}>
-                {children}
-            </h3>
-        </>
+        <h3 className={"text-3xl font-bold leading-tight pt-2"}>
+            {children}
+        </h3>
     );
 }
 
@@ -173,13 +109,14 @@ export function InlineCode({children, color}: {
     );
 }
 
-export function Link({children, href}: {
+export function Link({children, href, newTab}: {
     children?: ReactNode;
     href: string;
+    newTab?: boolean;
 }) {
-    return <NextLink href={href} target={"_blank"}>
+    return <NextLink href={href} target={newTab ? "_blank": ""}>
         <span
-            className={"text-ctp-blue hover:text-ctp-lavender cursor-pointer transition-colors duration-100"}>{children}↗</span>
+            className={"text-ctp-blue hover:text-ctp-lavender cursor-pointer transition-colors duration-100 group"}><span className={"group-hover:underline"}>{children}</span>↗</span>
     </NextLink>;
 }
 
@@ -192,12 +129,13 @@ export function Image({src, alt, caption, width, height}: {
 }) {
     return (
         <>
-            <div className={"rounded-lg overflow-hidden border-ctp-surface0 border-[1px] grid place-items-center mt-2"}>
+            <div className={"rounded-lg overflow-hidden border-ctp-surface0 border-[1px] grid place-items-center"}>
                 <NextImage
                     src={src}
                     alt={alt}
                     width={width}
                     height={height}
+                    className={"w-full h-full object-cover"}
                     placeholder={"blur"}
                     blurDataURL={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAPklEQVQIW2NUVTP9/+/vX4Z/f/8w/P0HoRnVNS2ggggJRk0dG6DgH6AKkCBUpY6e/X+YNpgEo56hM1glsgQAoA9DLTz3kC8AAAAASUVORK5CYII="}
                     style={{objectFit: "cover"}}
