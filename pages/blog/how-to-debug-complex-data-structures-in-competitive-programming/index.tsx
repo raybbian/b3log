@@ -22,7 +22,7 @@ import {
     testDebugOutput,
     variadicArguments,
     variadicArgumentsOutput
-} from "@/pages/blog/how-to-debug-complex-data-structures-in-competitive-programming/constants";
+} from "@/constants/how-to-debug-complex-data-structures-in-competitive-programming/constants";
 
 export default function Page() {
     return (
