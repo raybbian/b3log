@@ -30,8 +30,8 @@ export default function Page() {
             <Body>
                 <Title>How to Debug Complex Data Structures in Competitive Programming</Title>
                 <Paragraph>
-                    Imagine this. You're trying to solve everyone's favorite problem, TwoSum, in C++. You write up your
-                    solution, using the magical and mysterious creature known as the "hashmap". But there's a bug.
+                    Imagine this. You&apos;re trying to solve everyone&apos;s favorite problem, TwoSum, in C++. You write up your
+                    solution, using the magical and mysterious creature known as the &quot;hashmap&quot;. But there&apos;s a bug.
                     Stumped, you try to print out the contents of your hashmap to the terminal. Andddddd, you have to
                     type all of this:
                 </Paragraph>
@@ -39,26 +39,26 @@ export default function Page() {
             </Body>
             <Callout title={"Note"} type={"note"}>
                 <Paragraph>
-                    If you don't have access to your debug header file, you can use macros and defines such as
+                    If you don&apos;t have access to your debug header file, you can use macros and defines such as
                     using <InlineCode>fi</InlineCode> and <InlineCode>se</InlineCode> instead
-                    of <InlineCode>first</InlineCode> and <InlineCode>second</InlineCode>. However, it's still a lot of
+                    of <InlineCode>first</InlineCode> and <InlineCode>second</InlineCode>. However, it&apos;s still a lot of
                     typing, especially if you have to do it multiple times.
                 </Paragraph>
             </Callout>
             <Body>
                 <Paragraph>
-                    Doesn't seem like much on the screen, but it takes several seconds to type, even at 150wpm. But not
-                    only that, what if the hashmap wasn't even the root of your problems? Is it time to write another
+                    Doesn&apos;t seem like much on the screen, but it takes several seconds to type, even at 150wpm. But not
+                    only that, what if the hashmap wasn&apos;t even the root of your problems? Is it time to write another
                     loop to print out the contents of a <InlineCode>vector</InlineCode>? And what if you have to
                     print out an <InlineCode>std::array</InlineCode>, of <InlineCode>std::vector</InlineCode>,
                     of <InlineCode>std::pair</InlineCode> of integers?
                 </Paragraph>
                 <Paragraph>
-                    If you've ever done competitive programming on a site like <Link newTab={true}
+                    If you&apos;ve ever done competitive programming on a site like <Link newTab={true}
                                                                                      href={"https://usaco.org"}>USACO</Link> or <Link
                     newTab={true} href={"https://codeforces.com"}>Codeforces</Link>,
-                    you've probably related to these struggles in some form or another. Visualizing the information in
-                    the data structures you use should be a useful option when trying to debug your code. Let's make it
+                    you&apos;ve probably related to these struggles in some form or another. Visualizing the information in
+                    the data structures you use should be a useful option when trying to debug your code. Let&apos;s make it
                     so that is the case.
                 </Paragraph>
                 <Header>
@@ -69,8 +69,8 @@ export default function Page() {
                 </Paragraph>
                 <Code code={desiredDebug} language={"cpp"}/>
                 <Paragraph>
-                    I shouldn't have to comment out this line when submitting to online judges, and it should present
-                    the data in a way that doesn't hinder any brainpower left for debugging. Let's start with point
+                    I shouldn&apos;t have to comment out this line when submitting to online judges, and it should present
+                    the data in a way that doesn&apos;t hinder any brainpower left for debugging. Let&apos;s start with point
                     number one: one function for everything.
                 </Paragraph>
                 <Header>
@@ -94,24 +94,24 @@ export default function Page() {
                     But, what if we want to implement this function for a <InlineCode>float</InlineCode>? What about
                     a <InlineCode>unordered_set</InlineCode>? And
                     a <InlineCode>vector</InlineCode> of <InlineCode>vector</InlineCode> of <InlineCode>int</InlineCode>s?
-                    Surely we don't copy and paste the same template for every single data structure... right?
+                    Surely we don&apos;t copy and paste the same template for every single data structure... right?
                 </Paragraph>
                 <Paragraph>
                     We can improve overloading further by using templates. Templates allow us to re-use the same
-                    functions for multiple data types. Let's try to apply them to the previous example:
+                    functions for multiple data types. Let&apos;s try to apply them to the previous example:
                 </Paragraph>
                 <Code code={genericOverloading} language={"cpp"}/>
                 <Paragraph>
                     This is a function that can print out any <InlineCode>vector</InlineCode>, as long as its inner type
                     can be written to the output stream. However, while this works for any
-                    1D <InlineCode>vector</InlineCode>, this won't work for any 2D or 3D data structures. Is this truly
+                    1D <InlineCode>vector</InlineCode>, this won&apos;t work for any 2D or 3D data structures. Is this truly
                     the best that we can do?
                 </Paragraph>
             </Body>
             <Callout title={"Note"} type={"note"}>
                 <Paragraph>
                     We actually see these types of data structures more often than you think. Consider an adjacency list
-                    that represents a graph: that's a 2D data structure. Any problem that involves moving on a grid?
+                    that represents a graph: that&apos;s a 2D data structure. Any problem that involves moving on a grid?
                     Another
                     2D data structure. With more complicated DP problems, you might even see a 3D and even 4D data
                     structures.
@@ -124,7 +124,7 @@ export default function Page() {
                 <Paragraph>
                     Fortunately for us, C++ 20 has arrived just in time. C++ 20 introduces concepts, which are special
                     ways of telling the compiler which data types can be used on different functions. We can use
-                    concepts to control the types of data structures that can be used with our debug function. Let's see
+                    concepts to control the types of data structures that can be used with our debug function. Let&apos;s see
                     an example:
                 </Paragraph>
                 <Code code={rangesOverloading} language={"cpp"}/>
@@ -165,7 +165,7 @@ export default function Page() {
                 <Code code={recursiveDebug} output={recursiveDebugOutput} language={"cpp"}/>
                 <Paragraph>
                     Below is the full code that handles all types of containers, etc. Note that instead of a function, I
-                    use a <InlineCode>struct</InlineCode>'s initializer. Functions
+                    use a <InlineCode>struct</InlineCode>&apos;s initializer. Functions
                     like <InlineCode>initialize_line</InlineCode>, <InlineCode>depth_color</InlineCode>,
                     and <InlineCode>print_subscript</InlineCode> as well as variables
                     like <InlineCode>start_row</InlineCode>, <InlineCode>depth</InlineCode> and <InlineCode>last</InlineCode> are
@@ -178,7 +178,7 @@ export default function Page() {
                     The colors labeled in capital letters like <InlineCode
                     color={"text-ctp-red"}>RED</InlineCode> and <InlineCode
                     color={"text-ctp-green"}>GREEN</InlineCode> are
-                    just more C++ macros that I've defined. They replace to <Link newTab={true}
+                    just more C++ macros that I&apos;ve defined. They replace to <Link newTab={true}
                                                                                   href={"https://en.wikipedia.org/wiki/ANSI_escape_code"}>ANSI
                     escape codes</Link>, which allows me to
                     color the output of my debug function. They are taken from <Link newTab={true}
@@ -188,13 +188,13 @@ export default function Page() {
             </Callout>
             <Body>
                 <Paragraph>
-                    But note that we don't have to stop here:
+                    But note that we don&apos;t have to stop here:
                 </Paragraph>
                 <SubHeader>
                     Variadic Arguments
                 </SubHeader>
                 <Paragraph>
-                    With variadic arguments, we can "iterate" over the parameters of a function, allowing us to print
+                    With variadic arguments, we can &quot;iterate&quot; over the parameters of a function, allowing us to print
                     each and every single one of them:
                 </Paragraph>
                 <Code code={variadicArguments} output={variadicArgumentsOutput} language={"cpp"}/>
@@ -207,8 +207,8 @@ export default function Page() {
                     the <InlineCode>debug</InlineCode> function!
                 </Paragraph>
                 <Paragraph>
-                    While we are here, I've started to notice that our debug function won't be very helpful for
-                    debugging if we don't know what data corresponds to which variable. Fortunately for us, we can pass
+                    While we are here, I&apos;ve started to notice that our debug function won&apos;t be very helpful for
+                    debugging if we don&apos;t know what data corresponds to which variable. Fortunately for us, we can pass
                     in variable names to our function using C++ macros!
                 </Paragraph>
                 <Code code={macroDebug} language={"cpp"}/>
@@ -240,7 +240,7 @@ export default function Page() {
             </Body>
             <Callout type={"note"} title={"Note"}>
                 <Paragraph>
-                    With the ANSI escape codes, the output looks more like this (I'm not trying to convert all that into
+                    With the ANSI escape codes, the output looks more like this (I&apos;m not trying to convert all that into
                     HTML!):
                 </Paragraph>
                 <Image
@@ -253,8 +253,8 @@ export default function Page() {
             </Callout>
             <Body>
                 <Paragraph>
-                    Great! Now we can finish debugging and submit our code to the online judge. And.... oh. We've
-                    received TLE because we forgot to comment out our debug call! Let's change that.
+                    Great! Now we can finish debugging and submit our code to the online judge. And.... oh. We&apos;ve
+                    received TLE because we forgot to comment out our debug call! Let&apos;s change that.
                 </Paragraph>
                 <Header>
                     Obeying the Judge
@@ -264,8 +264,8 @@ export default function Page() {
                 </SubHeader>
                 <Paragraph>
                     How can our debug function differentiate between running on our local computer and running on the
-                    online judge? It doesn't! Instead, we use compiler flags and <i>even more</i> C++ preprocessing to
-                    achieve our goal (LOL). Here is how it's done:
+                    online judge? It doesn&apos;t! Instead, we use compiler flags and <i>even more</i> C++ preprocessing to
+                    achieve our goal (LOL). Here is how it&apos;s done:
                 </Paragraph>
                 <Code code={compilerFlags} language={"cpp"}/>
                 <Paragraph>
@@ -281,7 +281,7 @@ export default function Page() {
                     You can find the full debug file, all put together <Link newTab={true}
                                                                              href={"https://github.com/raybbian/comp-programming/blob/master/debug/debug.hpp"}>here</Link>.
                     Otherwise,
-                    I'll leave you with another example on how the debug function could be used for graphs:
+                    I&apos;ll leave you with another example on how the debug function could be used for graphs:
                 </Paragraph>
                 <Code code={dijkstraCode} output={dijkstraOutput} language={"cpp"} expand={true}/>
                 <Paragraph>
